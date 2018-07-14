@@ -32,19 +32,27 @@ namespace Nevlabs
             string filename = openFileDialog1.FileName;
             string[] lines = File.ReadAllLines(Path.GetFullPath(filename));
             string[] buf = new string[4];
-
+            List<Profile> list = new List<Profile>();
+            
             foreach (string elem in lines)
             {
                 buf = elem.Split('\t');
+                Profile profile = new Profile(buf[0], buf[1], buf[2], buf[3]);
+                list.Add(profile);
+
+            }
+
+            foreach(Profile elem in list)
+            {
 
                 SqlCommand insertProfiles = new SqlCommand("INSERT INTO [Profiles] " +
                "(Name, DateOfBirth, Email, PhoneNumber) VALUES (@Name, @DateOfBirth, @Email, @PhoneNumber)"
                , connection);
 
-                insertProfiles.Parameters.AddWithValue("Name", buf[0]);
-                insertProfiles.Parameters.AddWithValue("DateOfBirth", buf[1]);
-                insertProfiles.Parameters.AddWithValue("Email", buf[2]);
-                insertProfiles.Parameters.AddWithValue("PhoneNumber", buf[3]);
+                insertProfiles.Parameters.AddWithValue("Name", elem.name);
+                insertProfiles.Parameters.AddWithValue("DateOfBirth", elem.date);
+                insertProfiles.Parameters.AddWithValue("Email", elem.email);
+                insertProfiles.Parameters.AddWithValue("PhoneNumber", elem.phone);
                 insertProfiles.ExecuteNonQuery();
             }
             connection.Close();
