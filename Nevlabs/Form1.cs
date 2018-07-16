@@ -80,5 +80,37 @@ namespace Nevlabs
 
             MessageBox.Show("Файл успешно импортирован");
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\"
+            + @"килар\source\repos\Nevlabs\Nevlabs\Database1.mdf;Integrated Security=True";
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            string query = "SELECT * FROM Profiles";
+            SqlCommand outputProfiles = new SqlCommand(query, connection);
+
+            SqlDataReader reader = outputProfiles.ExecuteReader();
+            List<string[]> data = new List<string[]>();
+
+            while (reader.Read())
+            {
+                data.Add(new string[4]);
+
+                data[data.Count - 1][0] = reader[0].ToString();
+                data[data.Count - 1][1] = reader[1].ToString();
+                data[data.Count - 1][2] = reader[2].ToString();
+                data[data.Count - 1][3] = reader[3].ToString();
+            }
+
+            reader.Close();
+            connection.Close();
+
+            foreach(string[] elem in data)
+            {
+                dataGridView1.Rows.Add(elem);
+            }
+        }
     }
 }
