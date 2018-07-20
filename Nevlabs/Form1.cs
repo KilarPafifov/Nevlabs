@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -22,7 +23,52 @@ namespace Nevlabs
             openFileDialog1.Filter = "Text files(*.scv)|*.csv|All files(*.*)|*.*";
         }
         
-        private void importCSV()
+        private List<string> ExportCSV()
+        {
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\"
+            + @"килар\source\repos\Nevlabs\Nevlabs\Database1.mdf;Integrated Security=True";
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+
+
+            SqlCommand outputProfiles = new SqlCommand(" SELECT * FROM Profiles "
+                , connection);
+            SqlDataReader reader = outputProfiles.ExecuteReader();
+
+            List<string> list = new List<string>();
+
+            while (reader.Read())
+            {
+                string[] stringsForReader = new string[reader.FieldCount];
+                string stringsForList = "";
+
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    stringsForReader[i] = reader[i].ToString();
+                }
+
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    if (i == reader.FieldCount - 1)
+                    {
+                        stringsForList += stringsForReader[i].Trim();
+                    }
+
+                    else
+                    {
+                        stringsForList += stringsForReader[i].Trim() + '\t';
+                    }
+                }
+
+                list.Add(stringsForList);
+            }
+
+            reader.Close();
+            connection.Close();
+            return list;
+        }
+        private void ImportCSV()
         {
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\"
             + @"килар\source\repos\Nevlabs\Nevlabs\Database1.mdf;Integrated Security=True";
@@ -57,7 +103,7 @@ namespace Nevlabs
             connection.Close();
         }
 
-        private void clearTable()
+        private void ClearTable()
         {
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\"
             + @"килар\source\repos\Nevlabs\Nevlabs\Database1.mdf;Integrated Security=True";
@@ -74,8 +120,8 @@ namespace Nevlabs
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            //clearTable();
-            importCSV();
+            ClearTable();
+            ImportCSV();
 
             MessageBox.Show("Файл успешно импортирован");
         }
@@ -121,52 +167,14 @@ namespace Nevlabs
         private void button3_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
-                return;
-
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\"
-            + @"килар\source\repos\Nevlabs\Nevlabs\Database1.mdf;Integrated Security=True";
-
-            SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
-
-
-            SqlCommand outputProfiles = new SqlCommand(" SELECT * FROM Profiles "
-                , connection);
-            SqlDataReader reader = outputProfiles.ExecuteReader();
-
-            List<string> list = new List<string>();
-            
-            while (reader.Read())
             {
-                string[] stringsForReader = new string[reader.FieldCount];
-                string stringsForList = "";
-
-                for (int i = 0; i < reader.FieldCount; i++)
-                {
-                    stringsForReader[i] = reader[i].ToString();
-                }
-
-                for(int i = 0; i < reader.FieldCount; i++)
-                {
-                    if (i == reader.FieldCount - 1)
-                    {
-                        stringsForList += stringsForReader[i];
-                    }
-                    else
-                    {
-                        stringsForList += stringsForReader[i] + '\t';
-                    }
-                }
-
-                list.Add(stringsForList);
+                return;
             }
 
-            reader.Close();
-
+            List<string> list = ExportCSV();
             string filename = openFileDialog1.FileName;
+            
             File.WriteAllLines(Path.GetFullPath(filename), list);
-
-            connection.Close();
             MessageBox.Show("Данные успешно экспортированы в файл CSV ");
         }
     }

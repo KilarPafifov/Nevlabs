@@ -33,12 +33,12 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.button3 = new System.Windows.Forms.Button();
@@ -81,25 +81,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(681, 280);
             this.dataGridView1.TabIndex = 3;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(694, 279);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 48);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Export";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(149, 119);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(461, 20);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Нажмите кнопку \"Export\" , чтобы отобразить данные из БД ";
-            // 
             // name
             // 
             this.name.HeaderText = "name";
@@ -119,6 +100,25 @@
             // 
             this.phone.HeaderText = "phone";
             this.phone.Name = "phone";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(694, 279);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(94, 48);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Export";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(149, 119);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(461, 20);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Нажмите кнопку \"Export\" , чтобы отобразить данные из БД ";
             // 
             // radioButton1
             // 
@@ -156,7 +156,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(976, 450);
+            this.ClientSize = new System.Drawing.Size(976, 444);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
