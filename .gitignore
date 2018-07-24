@@ -1,0 +1,9 @@
+.vs/
+
+packages/
+
+Nevlabs/bin/
+Nevlabs/obj/
+
+Nevlabs/Database1.mdf
+Nevlabs/Database1_log.ldf

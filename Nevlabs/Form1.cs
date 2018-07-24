@@ -66,6 +66,7 @@ namespace Nevlabs
 
             reader.Close();
             connection.Close();
+            
             return list;
         }
         private void ImportCSV()
@@ -122,7 +123,8 @@ namespace Nevlabs
 
             ClearTable();
             ImportCSV();
-
+            
+            
             MessageBox.Show("Файл успешно импортирован");
         }
 
@@ -176,6 +178,15 @@ namespace Nevlabs
             
             File.WriteAllLines(Path.GetFullPath(filename), list);
             MessageBox.Show("Данные успешно экспортированы в файл CSV ");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Importer importer = new Importer();
+            
+            Thread thread = new Thread(importer.Importering);
+            thread.Start();
+           
         }
     }
 }

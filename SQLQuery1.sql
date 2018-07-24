@@ -1,2 +1,1 @@
-﻿DELETE FROM Profiles;
-SELECT * FROM Profiles;
+﻿delete from Profiles
