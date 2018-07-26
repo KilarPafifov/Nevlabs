@@ -43,6 +43,8 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.ExportORM = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -163,11 +165,33 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // ExportORM
+            // 
+            this.ExportORM.Location = new System.Drawing.Point(844, 346);
+            this.ExportORM.Name = "ExportORM";
+            this.ExportORM.Size = new System.Drawing.Size(120, 60);
+            this.ExportORM.TabIndex = 11;
+            this.ExportORM.Text = "Export ORM";
+            this.ExportORM.UseVisualStyleBackColor = true;
+            this.ExportORM.Click += new System.EventHandler(this.ExportORM_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(806, 52);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 12;
+            this.button5.Text = "Import ORM";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(976, 444);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.ExportORM);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.radioButton2);
@@ -202,6 +226,8 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button ExportORM;
+        private System.Windows.Forms.Button button5;
     }
 }
 

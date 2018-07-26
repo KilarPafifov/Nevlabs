@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
@@ -22,7 +23,23 @@ namespace Nevlabs
             button3.Click += button3_Click;
             openFileDialog1.Filter = "Text files(*.scv)|*.csv|All files(*.*)|*.*";
         }
-        
+
+        private void SetProfiles(List<Profiles> list)
+        {
+            var context = new Database1Entities();
+
+            foreach (Profiles profile in list)
+            {
+                context.Profiles.Add(profile);
+            }        
+        }
+
+        private List<Profiles> GetProfiles()
+        {
+            var Context = new Database1Entities();
+            var profiles = Context.Profiles.ToList();
+            return profiles;
+        }
         private List<string> ExportCSV()
         {
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\"
@@ -187,6 +204,35 @@ namespace Nevlabs
             Thread thread = new Thread(importer.Importering);
             thread.Start();
            
+        }
+
+        private void ExportORM_Click(object sender, EventArgs e)
+        {
+            string[] parseredStrings = new string[4];
+            List<Profiles> list = GetProfiles();
+            foreach(Profiles profile in list)
+            {
+                parseredStrings[0] = profile.Name.ToString();
+                parseredStrings[1] = profile.DateOfBirth.ToString();
+                parseredStrings[2] = profile.Email.ToString();
+                parseredStrings[3] = profile.PhoneNumber.ToString(); 
+                dataGridView1.Rows.Add(parseredStrings);
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ClearTable();
+            List < Profiles > list = new List<Profiles>();
+            Profiles profile = new Profiles();
+            profile.Name = "anton ftrolov j";
+            profile.DateOfBirth = "1988";
+            profile.Email = "an@maill.ru";
+            profile.PhoneNumber = "77777";
+            var context = new Database1Entities();
+            context.Profiles.Add(profile);
+            context.SaveChanges();
+
         }
     }
 }
