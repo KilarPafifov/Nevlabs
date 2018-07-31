@@ -31,7 +31,9 @@ namespace Nevlabs
             foreach (Profiles profile in list)
             {
                 context.Profiles.Add(profile);
-            }        
+                context.SaveChanges();
+            }
+            
         }
 
         private List<Profiles> GetProfiles()
@@ -121,6 +123,33 @@ namespace Nevlabs
             connection.Close();
         }
 
+        private void CreateTable()
+        {
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\"
+            + @"килар\source\repos\Nevlabs\Nevlabs\Database1.mdf;Integrated Security=True";
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            SqlCommand createTable = new SqlCommand("CREATE TABLE Profiles(" +
+                "Name char(100), DateOfBirth char(100), Email char(100), PhoneNumber char(100))",
+                connection);
+
+            createTable.ExecuteNonQuery();
+            connection.Close();
+        }
+        private void DropTable()
+        {
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\"
+            + @"килар\source\repos\Nevlabs\Nevlabs\Database1.mdf;Integrated Security=True";
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            SqlCommand dropTable = new SqlCommand("DROP TABLE Profiles", connection);
+            dropTable.ExecuteNonQuery();
+            connection.Close();
+        }
         private void ClearTable()
         {
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\"
@@ -222,6 +251,8 @@ namespace Nevlabs
 
         private void button5_Click(object sender, EventArgs e)
         {
+            //   DropTable();
+            // CreateTable();
             ClearTable();
             List < Profiles > list = new List<Profiles>();
             Profiles profile = new Profiles();
@@ -229,10 +260,11 @@ namespace Nevlabs
             profile.DateOfBirth = "1988";
             profile.Email = "an@maill.ru";
             profile.PhoneNumber = "77777";
+          
             var context = new Database1Entities();
             context.Profiles.Add(profile);
             context.SaveChanges();
-
+            
         }
     }
 }

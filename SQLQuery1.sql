@@ -1,1 +1,1 @@
-﻿delete from Profiles
+﻿select * from Profiles
