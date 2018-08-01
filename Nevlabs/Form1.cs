@@ -32,8 +32,7 @@ namespace Nevlabs
             {
                 context.Profiles.Add(profile);
                 context.SaveChanges();
-            }
-            
+            }     
         }
 
         private List<Profiles> GetProfiles()
@@ -42,10 +41,11 @@ namespace Nevlabs
             var profiles = Context.Profiles.ToList();
             return profiles;
         }
+
         private List<string> ExportCSV()
         {
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\"
-            + @"килар\source\repos\Nevlabs\Nevlabs\Database1.mdf;Integrated Security=True";
+            + @"килар\source\repos\Nevlabs\Nevlabs\bin\Debug\Database1.mdf;Integrated Security=True";
 
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
@@ -91,7 +91,7 @@ namespace Nevlabs
         private void ImportCSV()
         {
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\"
-            + @"килар\source\repos\Nevlabs\Nevlabs\Database1.mdf;Integrated Security=True";
+            + @"килар\source\repos\Nevlabs\Nevlabs\bin\Debug\Database1.mdf;Integrated Security=True";
 
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
@@ -126,7 +126,7 @@ namespace Nevlabs
         private void CreateTable()
         {
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\"
-            + @"килар\source\repos\Nevlabs\Nevlabs\Database1.mdf;Integrated Security=True";
+            + @"килар\source\repos\Nevlabs\Nevlabs\bin\Debug\Database1.mdf;Integrated Security=True";
 
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
@@ -141,7 +141,7 @@ namespace Nevlabs
         private void DropTable()
         {
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\"
-            + @"килар\source\repos\Nevlabs\Nevlabs\Database1.mdf;Integrated Security=True";
+            + @"килар\source\repos\Nevlabs\Nevlabs\bin\Debug\Database1.mdf;Integrated Security=True";
 
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
@@ -153,7 +153,7 @@ namespace Nevlabs
         private void ClearTable()
         {
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\"
-            + @"килар\source\repos\Nevlabs\Nevlabs\Database1.mdf;Integrated Security=True";
+            + @"килар\source\repos\Nevlabs\Nevlabs\bin\Debug\Database1.mdf;Integrated Security=True";
 
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
@@ -165,11 +165,12 @@ namespace Nevlabs
         private void button1_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+            {
                 return;
+            }
 
             ClearTable();
             ImportCSV();
-            
             
             MessageBox.Show("Файл успешно импортирован");
         }
@@ -177,7 +178,7 @@ namespace Nevlabs
         private void button2_Click(object sender, EventArgs e)
         {
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\"
-            + @"килар\source\repos\Nevlabs\Nevlabs\Database1.mdf;Integrated Security=True";
+            + @"килар\source\repos\Nevlabs\Nevlabs\bin\Debug\Database1.mdf;Integrated Security=True";
 
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
@@ -251,20 +252,31 @@ namespace Nevlabs
 
         private void button5_Click(object sender, EventArgs e)
         {
-            //   DropTable();
-            // CreateTable();
             ClearTable();
-            List < Profiles > list = new List<Profiles>();
-            Profiles profile = new Profiles();
-            profile.Name = "anton ftrolov j";
-            profile.DateOfBirth = "1988";
-            profile.Email = "an@maill.ru";
-            profile.PhoneNumber = "77777";
-          
-            var context = new Database1Entities();
-            context.Profiles.Add(profile);
-            context.SaveChanges();
-            
+
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            string filename = openFileDialog1.FileName;
+            string[] lines = File.ReadAllLines(Path.GetFullPath(filename));
+            string[] buf = new string[4];
+            List<Profiles> list = new List<Profiles>();
+
+            foreach (string elem in lines)
+            {
+                buf = elem.Split('\t');
+                Profiles profile = new Profiles();
+                profile.Name = buf[0];
+                profile.DateOfBirth = buf[1];
+                profile.Email = buf[2];
+                profile.PhoneNumber = buf[3];
+                list.Add(profile);
+            }
+
+            SetProfiles(list);
+            MessageBox.Show("Данные успешно импортированы в БД(ORM)");
         }
     }
 }

@@ -177,9 +177,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(806, 52);
+            this.button5.Location = new System.Drawing.Point(739, 34);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.Size = new System.Drawing.Size(204, 41);
             this.button5.TabIndex = 12;
             this.button5.Text = "Import ORM";
             this.button5.UseVisualStyleBackColor = true;
