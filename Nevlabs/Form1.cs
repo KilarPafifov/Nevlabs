@@ -24,10 +24,20 @@ namespace Nevlabs
             openFileDialog1.Filter = "Text files(*.scv)|*.csv|All files(*.*)|*.*";
         }
 
+        private void SetPeople(List<People> list)
+        {
+            var context = new forNevlabsEntities();
+
+            foreach (People profile in list)
+            {
+                context.People.Add(profile);
+                context.SaveChanges();
+            }
+        }
         private void SetProfiles(List<Profiles> list)
         {
             var context = new Database1Entities();
-
+             
             foreach (Profiles profile in list)
             {
                 context.Profiles.Add(profile);
@@ -276,6 +286,15 @@ namespace Nevlabs
             }
 
             SetProfiles(list);
+            var context = new forNevlabsEntities();
+            forNevlabsEntities nevlabs = new forNevlabsEntities();
+            People people = new People();
+            people.Name = "Andrey b hj";
+            people.DateOfBirth = "1990";
+            people.Email = "and@mail";
+            people.PhoneNumber = "0000000";
+            context.People.Add(people);
+            context.SaveChanges();
             MessageBox.Show("Данные успешно импортированы в БД(ORM)");
         }
     }
