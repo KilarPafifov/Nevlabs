@@ -1,1 +1,1 @@
-﻿select * from Profiles
+﻿select * from People

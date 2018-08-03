@@ -31,13 +31,8 @@
         </EntityType>
         <EntityContainer Name="Хранилище forNevlabsModelContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="People" EntityType="Self.People" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [People].[Name] AS [Name], 
-    [People].[DateOfBirth] AS [DateOfBirth], 
-    [People].[Email] AS [Email], 
-    [People].[PhoneNumber] AS [PhoneNumber]
-    FROM [dbo].[People] AS [People]</DefiningQuery>
+          <EntitySet Name="People" EntityType="Self.People" store:Type="Tables" Schema="dbo">
+            
           </EntitySet>
         </EntityContainer>
       </Schema>
