@@ -20,9 +20,9 @@ namespace Nevlabs
                 + '\t' + "8888767";
 
             List<string> list = new List<string>();
-            for (int i = 0; i < 1000000; i++)
+            for (int i = 0; i < 1000; i++)
             {
-                Thread.Sleep(50);
+                Thread.Sleep(3);
                 list.Add(Convert.ToString(i) + s);
             }
             
