@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -36,23 +35,15 @@
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.ExportORM = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.Export = new System.Windows.Forms.Button();
+            this.Import = new System.Windows.Forms.Button();
+            this.DropData = new System.Windows.Forms.Button();
+            this.ShowData = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(740, 151);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 41);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Drop data";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // openFileDialog1
             // 
@@ -92,16 +83,6 @@
             this.phone.HeaderText = "phone";
             this.phone.Name = "phone";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(740, 390);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 41);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Show data";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
@@ -124,40 +105,60 @@
             this.radioButton2.Text = "by date";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // ExportORM
+            // Export
             // 
-            this.ExportORM.Location = new System.Drawing.Point(240, 437);
-            this.ExportORM.Name = "ExportORM";
-            this.ExportORM.Size = new System.Drawing.Size(200, 41);
-            this.ExportORM.TabIndex = 11;
-            this.ExportORM.Text = "Export";
-            this.ExportORM.UseVisualStyleBackColor = true;
-            this.ExportORM.Click += new System.EventHandler(this.ExportORM_Click);
+            this.Export.Location = new System.Drawing.Point(482, 441);
+            this.Export.Name = "Export";
+            this.Export.Size = new System.Drawing.Size(200, 41);
+            this.Export.TabIndex = 13;
+            this.Export.Text = "Export";
+            this.Export.UseVisualStyleBackColor = true;
+            this.Export.Click += new System.EventHandler(this.Export_Click);
             // 
-            // button5
+            // Import
             // 
-            this.button5.Location = new System.Drawing.Point(1, 437);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(200, 41);
-            this.button5.TabIndex = 12;
-            this.button5.Text = "Import";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.Import.Location = new System.Drawing.Point(1, 437);
+            this.Import.Name = "Import";
+            this.Import.Size = new System.Drawing.Size(200, 41);
+            this.Import.TabIndex = 14;
+            this.Import.Text = "Import";
+            this.Import.UseVisualStyleBackColor = true;
+            this.Import.Click += new System.EventHandler(this.Import_Click);
+            // 
+            // DropData
+            // 
+            this.DropData.Location = new System.Drawing.Point(740, 138);
+            this.DropData.Name = "DropData";
+            this.DropData.Size = new System.Drawing.Size(110, 41);
+            this.DropData.TabIndex = 15;
+            this.DropData.Text = "Drop data";
+            this.DropData.UseVisualStyleBackColor = true;
+            this.DropData.Click += new System.EventHandler(this.DropData_Click);
+            // 
+            // ShowData
+            // 
+            this.ShowData.Location = new System.Drawing.Point(740, 390);
+            this.ShowData.Name = "ShowData";
+            this.ShowData.Size = new System.Drawing.Size(110, 41);
+            this.ShowData.TabIndex = 16;
+            this.ShowData.Text = "Show data";
+            this.ShowData.UseVisualStyleBackColor = true;
+            this.ShowData.Click += new System.EventHandler(this.ShowData_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(862, 494);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.ExportORM);
+            this.Controls.Add(this.ShowData);
+            this.Controls.Add(this.DropData);
+            this.Controls.Add(this.Import);
+            this.Controls.Add(this.Export);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
-            this.Text = "Connection with Data Base";
+            this.Text = "Nevlabs";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -165,21 +166,20 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
         private System.Windows.Forms.DataGridViewTextBoxColumn phone;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.Button ExportORM;
-        private System.Windows.Forms.Button button5;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button Export;
+        private System.Windows.Forms.Button Import;
+        private System.Windows.Forms.Button DropData;
+        private System.Windows.Forms.Button ShowData;
     }
 }
 

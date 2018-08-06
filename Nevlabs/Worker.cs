@@ -12,7 +12,6 @@ namespace Nevlabs
     public class Worker
     {
         public string fileName { get; set; }
-
         private forNevlabsEntities context = new forNevlabsEntities();
         private void AddPeople(List<People> list)
         {
@@ -22,13 +21,11 @@ namespace Nevlabs
                 context.SaveChanges();
             }
         }
-
         public List<People> GetPeople()
         {
             var people = context.People.ToList();
             return people;
         }
-
         public void ClearTable()
         {
             context.People.RemoveRange(context.People);
@@ -52,6 +49,20 @@ namespace Nevlabs
             }
 
             AddPeople(list);
+        }
+        public void Exportering()
+        {
+
+            List<People> list = GetPeople();
+            List<string> list2 = new List<string>();
+
+            foreach (People people in list)
+            {
+                list2.Add(people.Name.Trim() + '\t' + people.DateOfBirth.Trim() + '\t' +
+                    people.Email.Trim() + '\t' + people.PhoneNumber.Trim());
+            }
+
+            File.WriteAllLines(Path.GetFullPath(fileName), list2);
         }
 
     }
