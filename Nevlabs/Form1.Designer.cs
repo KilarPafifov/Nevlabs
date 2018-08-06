@@ -31,17 +31,14 @@
             this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.button4 = new System.Windows.Forms.Button();
             this.ExportORM = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -54,21 +51,12 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 41);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Clear table";
+            this.button1.Text = "Drop data";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(105, 56);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(616, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Нажмите кнопку \"Import ORM\" , чтобы выбрать файл и импортировать его в БД";
             // 
             // dataGridView1
             // 
@@ -78,10 +66,10 @@
             this.date,
             this.email,
             this.phone});
-            this.dataGridView1.Location = new System.Drawing.Point(1, 151);
+            this.dataGridView1.Location = new System.Drawing.Point(1, -1);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(681, 280);
+            this.dataGridView1.Size = new System.Drawing.Size(681, 432);
             this.dataGridView1.TabIndex = 3;
             // 
             // name
@@ -114,15 +102,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(149, 119);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(491, 20);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Нажмите кнопку \"Show data\" , чтобы отобразить данные из БД ";
-            // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
@@ -145,23 +124,13 @@
             this.radioButton2.Text = "by date";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(482, 437);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(200, 41);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Export in new thread";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // ExportORM
             // 
             this.ExportORM.Location = new System.Drawing.Point(240, 437);
             this.ExportORM.Name = "ExportORM";
             this.ExportORM.Size = new System.Drawing.Size(200, 41);
             this.ExportORM.TabIndex = 11;
-            this.ExportORM.Text = "Export ORM";
+            this.ExportORM.Text = "Export";
             this.ExportORM.UseVisualStyleBackColor = true;
             this.ExportORM.Click += new System.EventHandler(this.ExportORM_Click);
             // 
@@ -171,7 +140,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(200, 41);
             this.button5.TabIndex = 12;
-            this.button5.Text = "Import ORM";
+            this.button5.Text = "Import";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -183,13 +152,10 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.ExportORM);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Connection with Data Base";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -203,17 +169,14 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
         private System.Windows.Forms.DataGridViewTextBoxColumn phone;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button ExportORM;
         private System.Windows.Forms.Button button5;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
