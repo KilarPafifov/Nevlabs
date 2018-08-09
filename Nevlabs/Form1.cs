@@ -74,7 +74,6 @@ namespace Nevlabs
 
         private void Import_Click(object sender, EventArgs e)
         {
-
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
             {
                 return;

@@ -23,7 +23,9 @@ namespace Nevlabs
         }
         public List<People> GetPeople()
         {
-            var people = context.People.ToList();
+            var people = context.Database
+                .SqlQuery<People>
+                ("SELECT * FROM People ORDER BY Name, DateOfBirth").ToList();
             return people;
         }
         public void ClearTable()
