@@ -23,11 +23,10 @@ namespace Nevlabs
         }
         public List<People> GetPeople()
         {
-            var people = context.Database
-                .SqlQuery<People>
-                ("SELECT * FROM People ORDER BY Name, DateOfBirth").ToList();
+            var people = context.People.OrderBy(p => p.Name).ThenBy(p => p.DateOfBirth).ToList();
             return people;
         }
+
         public void ClearTable()
         {
             context.People.RemoveRange(context.People);
